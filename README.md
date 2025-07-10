@@ -1,24 +1,36 @@
 # CCS811 STM32/RAK3172 Driver
 
-A lightweight CCS811 air quality sensor driver written for STM32 microcontrollers and RAK3172 (STM32WLE5C) modules.
-
 ## 👤 Author
 **Muhammed KANJO**
 
-## 📦 Features
-- Supports STM32 HAL (I2C1, I2C2)
-- Works with RAK3172 (I2C2)
-- Reads CO₂ (ppm) and TVOC (ppb)
-- Environmental compensation (humidity & temperature)
-- Clean, MIT-licensed, and ready for GitHub
+This is a lightweight C driver for the **CCS811 Air Quality Sensor**, supporting both:
 
-## 🛠️ Hardware Connection
-| CCS811 Pin | STM32 Pin    |
-|------------|--------------|
-| VCC        | 3.3V         |
-| GND        | GND          |
-| SDA        | I2C2_SDA     |
-| SCL        | I2C2_SCL     |
+✅ Generic **STM32 MCUs** (STM32F0/F1/F4/L0/L4/L1/WL series)  
+✅ **RAK3172 LoRa Module** (STM32WLE5 based)
+
+It allows reading **CO₂ (ppm)** and **TVOC (ppb)** values over I2C and printing them to UART.
+
+---
+
+## 📦 Features
+- I2C communication with CCS811 (supports I2C1, I2C2, etc.)
+- Automatic initialization and configuration (APP_START & Drive Mode)
+- CO₂ and TVOC measurement retrieval
+- Optional environmental data compensation (temperature & humidity)
+- Works out-of-the-box on **RAK3172 (STM32WLE5)** and other STM32 boards
+
+---
+
+## 🔌 Hardware Connections
+
+| CCS811 Pin | STM32 Pin (I2C2 Example) | RAK3172 Pin (I2C2) |
+|------------|---------------------------|---------------------|
+| VCC        | 3.3V                      | 3.3V                |
+| GND        | GND                       | GND                 |
+| SDA        | PB11                      | PB11 (I2C2 SDA)     |
+| SCL        | PB10                      | PB10 (I2C2 SCL)     |
+
+⚠️ Make sure to use 4.7kΩ pull-up resistors on SDA and SCL lines.
 
 ---
 
